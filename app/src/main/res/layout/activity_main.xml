@@ -20,20 +20,22 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_category"
+            android:id="@+id/btnСategory"
             style="@style/StyleNavButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_quarter_main"
             android:layout_weight="1"
+            android:backgroundTint="@color/backgroundNavButtonCategory"
             android:text="@string/btn_category_text" />
 
         <Button
-            android:id="@+id/btn_favorites"
+            android:id="@+id/btnFavorites"
             style="@style/StyleNavButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/backgroundNavButtonFavorites"
             android:text="@string/btn_favorites_text"
             app:icon="@drawable/ic_heart_empty"
             app:iconGravity="textEnd" />

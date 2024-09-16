@@ -4,5 +4,9 @@
     <dimen name="margin_main">16dp</dimen>
     <dimen name="margin_half_main">8dp</dimen>
     <dimen name="margin_quarter_main">4dp</dimen>
+    <dimen name="padding_main">20dp</dimen>
+    <dimen name="padding_half_main">10dp</dimen>
+    <dimen name="cornerRadius">8dp</dimen>
+    <dimen name="textSize_title">14sp</dimen>"
 
 </resources>
