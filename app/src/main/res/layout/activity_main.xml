@@ -8,12 +8,24 @@
     android:background="@color/backgroundMainLayout"
     tools:context=".MainActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mainContainer"
+        android:name="com.nikulindev.recipesapp.CategoriesListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_small_8"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_main"
-        android:layout_marginEnd="@dimen/margin_main"
-        android:layout_marginBottom="@dimen/margin_half_main"
+        android:layout_marginStart="@dimen/margin_normal_16"
+        android:layout_marginEnd="@dimen/margin_normal_16"
+        android:layout_marginBottom="@dimen/margin_small_8"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +36,7 @@
             style="@style/StyleNavButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_quarter_main"
+            android:layout_marginEnd="@dimen/margin_small_4"
             android:layout_weight="1"
             android:backgroundTint="@color/backgroundNavButtonCategory"
             android:text="@string/btn_category_text" />
@@ -41,5 +53,6 @@
             app:iconGravity="textEnd" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
