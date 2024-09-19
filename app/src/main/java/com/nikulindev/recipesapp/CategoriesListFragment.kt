@@ -10,7 +10,8 @@ import com.nikulindev.recipesapp.databinding.FragmentListCategoriesBinding
 class CategoriesListFragment : Fragment() {
 
     private var _binding: FragmentListCategoriesBinding? = null
-    private val binding get() = _binding!!
+    private val binding
+        get() = _binding ?: throw IllegalStateException("Binding for FragmentListCategoriesBinding must not be null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
