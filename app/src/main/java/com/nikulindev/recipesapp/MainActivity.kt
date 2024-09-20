@@ -1,6 +1,7 @@
 package com.nikulindev.recipesapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -22,6 +23,22 @@ class MainActivity : AppCompatActivity() {
                 replace<CategoriesListFragment>(R.id.mainContainer)
             }
         }
+
+        binding.btnCategory.setOnClickListener {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<CategoriesFragment>(R.id.mainContainer)
+            }
+
+        }
+
+        binding.btnFavorites.setOnClickListener {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<FavoritesFragment>(R.id.mainContainer)
+            }
+        }
+
 
     }
 }
