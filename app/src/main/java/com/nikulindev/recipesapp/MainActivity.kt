@@ -23,6 +23,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnCategory.setOnClickListener {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<CategoryFragment>(R.id.mainContainer)
+            }
+        }
+
+        binding.btnFavorites.setOnClickListener {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<FavoritesFragment>(R.id.mainContainer)
+            }
+        }
+
     }
 }
 
