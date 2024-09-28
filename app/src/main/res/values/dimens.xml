@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="height_header_224">224dp</dimen>
+
     <dimen name="margin_normal_20">20dp</dimen>
     <dimen name="margin_normal_16">16dp</dimen>
     <dimen name="margin_normal_10">10dp</dimen>
     <dimen name="margin_small_8">8dp</dimen>
     <dimen name="margin_small_4">4dp</dimen>
 
-    <dimen name="textSize_title">14sp</dimen>
+    <dimen name="size_text_title_14">14sp</dimen>
+    <dimen name="size_text_title_20">20sp</dimen>
+
+    <dimen name="count_span_2">2</dimen>
+    <dimen name="count_item_6">6</dimen>
 
 </resources>

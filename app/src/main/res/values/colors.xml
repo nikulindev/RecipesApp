@@ -5,6 +5,7 @@
     <color name="backgroundMainLayout">#F4FAFF</color>
     <color name="backgroundNavButtonCategory">#525DC0</color>
     <color name="backgroundNavButtonFavorites">#E13E3E</color>
+    <color name="colorTextCategory">#5F3678</color>
 
 
 </resources>
