@@ -6,6 +6,7 @@
     <color name="backgroundNavButtonCategory">#525DC0</color>
     <color name="backgroundNavButtonFavorites">#E13E3E</color>
     <color name="colorTextCategory">#5F3678</color>
+    <color name="colorTextDescription">#666666</color>
 
 
 </resources>
