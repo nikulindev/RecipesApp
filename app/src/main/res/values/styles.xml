@@ -4,7 +4,6 @@
     <style name="StyleDescriptionCardView" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/size_text_description_12</item>
         <item name="android:fontFamily">@font/montserrat_medium</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/colorTextDescription</item>
     </style>
 

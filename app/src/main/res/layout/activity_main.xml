@@ -39,7 +39,7 @@
             android:layout_marginEnd="@dimen/margin_small_4"
             android:layout_weight="1"
             android:backgroundTint="@color/backgroundNavButtonCategory"
-            android:text="@string/btn_category_text" />
+            android:text="@string/title_categories" />
 
         <Button
             android:id="@+id/btnFavorites"

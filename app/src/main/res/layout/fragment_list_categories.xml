@@ -16,13 +16,13 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/description_food_image"
             android:scaleType="centerCrop"
             android:src="@drawable/bcg_categories"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/StyleTitle20"
@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/margin_normal_16"
             android:layout_marginBottom="@dimen/margin_normal_16"
             android:background="@drawable/shape_title_header"
-            android:text="@string/title_category_text"
+            android:text="@string/title_categories"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
