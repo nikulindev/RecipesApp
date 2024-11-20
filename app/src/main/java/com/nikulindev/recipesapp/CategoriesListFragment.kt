@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nikulindev.recipesapp.databinding.FragmentListCategoriesBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+
 
 class CategoriesListFragment : Fragment() {
 
@@ -21,6 +23,22 @@ class CategoriesListFragment : Fragment() {
         _binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecycler() // Вызов вспомогательного метода
+    }
+
+    private fun initRecycler() {
+
+        val categories = STUB.getCategories()
+        val adapter = CategoriesListAdapter(categories)
+
+        binding.rvCategories.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            this.adapter = adapter
+        }
     }
 
 
