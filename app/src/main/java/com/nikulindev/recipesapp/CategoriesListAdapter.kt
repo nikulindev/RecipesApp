@@ -3,37 +3,38 @@ package com.nikulindev.recipesapp
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nikulindev.recipesapp.data.Category
+import com.nikulindev.recipesapp.databinding.ItemCategoryBinding
 import java.io.InputStream
 
 
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.imageCategory)
-        val titleTextView: TextView = view.findViewById(R.id.textCategoryTitle)
-        val descriptionTextView: TextView = view.findViewById(R.id.textCategoryDescription)
-    }
+    class ViewHolder(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(viewGroup.context)
-        val view = inflater.inflate(R.layout.item_category, viewGroup, false)
-        return ViewHolder(view)
+
+        val binding = ItemCategoryBinding.inflate(
+            LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val category: Category = dataSet[position]
-        viewHolder.titleTextView.text = category.title
-        viewHolder.descriptionTextView.text = category.description
+        with(viewHolder.binding) {
+            textCategoryTitle.text = category.title
+            textCategoryDescription.text = category.description
+        }
 
         val drawable = try {
-            val inputStream: InputStream? = viewHolder.imageView.context.assets?.open(dataSet[position].imageUrl)
+            val inputStream: InputStream? =
+                viewHolder.binding.imageCategory.context.assets?.open(dataSet[position].imageUrl)
             Drawable.createFromStream(inputStream, null)
 
         } catch (e: Exception) {
@@ -41,8 +42,9 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
             e.printStackTrace()
             null
         }
-        viewHolder.imageView.setImageDrawable(drawable)
-
+        viewHolder.binding.imageCategory.setImageDrawable(drawable)
+        viewHolder.binding.imageCategory.contentDescription =
+            "Изображение категории ${category.title}"
 
     }
 
