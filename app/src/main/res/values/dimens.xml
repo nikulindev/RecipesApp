@@ -14,7 +14,4 @@
     <dimen name="size_text_title_14">14sp</dimen>
     <dimen name="size_text_title_20">20sp</dimen>
 
-    <dimen name="count_span_2">2</dimen>
-    <dimen name="count_item_6">6</dimen>
-
 </resources>

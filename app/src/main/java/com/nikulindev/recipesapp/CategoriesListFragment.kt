@@ -11,7 +11,8 @@ class CategoriesListFragment : Fragment() {
 
     private var _binding: FragmentListCategoriesBinding? = null
     private val binding
-        get() = _binding ?: throw IllegalStateException("Binding for FragmentListCategoriesBinding must not be null")
+        get() = _binding
+            ?: throw IllegalStateException("Binding for FragmentListCategoriesBinding must not be null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +24,20 @@ class CategoriesListFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecycler() // Вызов вспомогательного метода
+    }
+
+    private fun initRecycler() {
+
+        val categories = STUB.getCategories()
+        val adapter = CategoriesListAdapter(categories)
+
+        binding.rvCategories.apply {
+            this.adapter = adapter
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
