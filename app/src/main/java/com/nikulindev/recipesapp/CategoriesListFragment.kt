@@ -26,7 +26,7 @@ class CategoriesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler() // Вызов вспомогательного метода
+        initRecycler()
     }
 
     private fun initRecycler() {
@@ -34,9 +34,22 @@ class CategoriesListFragment : Fragment() {
         val categories = STUB.getCategories()
         val adapter = CategoriesListAdapter(categories)
 
-        binding.rvCategories.apply {
-            this.adapter = adapter
-        }
+        binding.rvCategories.adapter = adapter
+
+        adapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
+            override fun onItemClick() {
+                openRecipesByCategoryId()
+            }
+        })
+    }
+
+    private fun openRecipesByCategoryId() {
+        val recipesListFragment = RecipesListFragment()
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, recipesListFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroyView() {
