@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.nikulindev.recipesapp.databinding.FragmentListCategoriesBinding
 
 class CategoriesListFragment : Fragment() {
@@ -26,7 +28,7 @@ class CategoriesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler() // Вызов вспомогательного метода
+        initRecycler()
     }
 
     private fun initRecycler() {
@@ -34,9 +36,23 @@ class CategoriesListFragment : Fragment() {
         val categories = STUB.getCategories()
         val adapter = CategoriesListAdapter(categories)
 
-        binding.rvCategories.apply {
-            this.adapter = adapter
+        binding.rvCategories.adapter = adapter
+
+        adapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
+            override fun onItemClick() {
+                openRecipesByCategoryId()
+            }
+        })
+    }
+
+    private fun openRecipesByCategoryId() {
+
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            addToBackStack(null)
+            replace<RecipesListFragment>(R.id.mainContainer)
         }
+
     }
 
     override fun onDestroyView() {
