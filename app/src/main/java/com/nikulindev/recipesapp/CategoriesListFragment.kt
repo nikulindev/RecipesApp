@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.nikulindev.recipesapp.databinding.FragmentListCategoriesBinding
 
 class CategoriesListFragment : Fragment() {
@@ -44,12 +46,13 @@ class CategoriesListFragment : Fragment() {
     }
 
     private fun openRecipesByCategoryId() {
-        val recipesListFragment = RecipesListFragment()
 
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, recipesListFragment)
-            .addToBackStack(null)
-            .commit()
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            addToBackStack(null)
+            replace<RecipesListFragment>(R.id.mainContainer)
+        }
+
     }
 
     override fun onDestroyView() {
