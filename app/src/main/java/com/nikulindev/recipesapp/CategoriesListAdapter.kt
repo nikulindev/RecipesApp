@@ -14,7 +14,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick()
+        fun onItemClick(categoryId: Int)
     }
 
     private var itemClickListener: OnItemClickListener? = null
@@ -56,7 +56,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
             imageCategory.setImageDrawable(drawable)
             imageCategory.contentDescription = "Изображение категории ${category.title}"
             root.setOnClickListener {
-                itemClickListener?.onItemClick()
+                itemClickListener?.onItemClick(category.id)
             }
         }
 

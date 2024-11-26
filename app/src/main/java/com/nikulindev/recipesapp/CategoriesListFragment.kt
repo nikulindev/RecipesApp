@@ -11,6 +11,12 @@ import com.nikulindev.recipesapp.databinding.FragmentListCategoriesBinding
 
 class CategoriesListFragment : Fragment() {
 
+    companion object {
+        const val ARG_CATEGORY_ID = "ARG_CATEGORY_ID"
+        const val ARG_CATEGORY_NAME = "ARG_CATEGORY_NAME"
+        const val ARG_CATEGORY_IMAGE_URL = "ARG_CATEGORY_IMAGE_URL"
+    }
+
     private var _binding: FragmentListCategoriesBinding? = null
     private val binding
         get() = _binding
@@ -39,18 +45,31 @@ class CategoriesListFragment : Fragment() {
         binding.rvCategories.adapter = adapter
 
         adapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
-            override fun onItemClick() {
-                openRecipesByCategoryId()
+            override fun onItemClick(categoryId: Int) {
+                openRecipesByCategoryId(categoryId)
             }
         })
     }
 
-    private fun openRecipesByCategoryId() {
+    private fun openRecipesByCategoryId(categoryId: Int) {
+
+        val category = STUB.getCategories().find { it.id == categoryId }
+            ?: throw IllegalArgumentException("Category not found for id: $categoryId")
+
+        val categoryName = category.title
+        val categoryImageUrl = category.imageUrl
+
+
+        val bundle = Bundle().apply {
+            putInt(ARG_CATEGORY_ID, categoryId)
+            putString(ARG_CATEGORY_NAME, categoryName)
+            putString(ARG_CATEGORY_IMAGE_URL, categoryImageUrl)
+        }
 
         parentFragmentManager.commit {
             setReorderingAllowed(true)
             addToBackStack(null)
-            replace<RecipesListFragment>(R.id.mainContainer)
+            replace<RecipesListFragment>(R.id.mainContainer, args = bundle)
         }
 
     }
